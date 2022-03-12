@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\CourseModel;
+use App\ServicesModel;
 use App\VisitorModel;
 
 class HomeController extends Controller
@@ -14,6 +16,12 @@ class HomeController extends Controller
         $timeDate = date("Y-m-d h:i:sa");
         VisitorModel::insert(['ip_address' => $UserIP, 'visit_time' => $timeDate]);
 
-        return view('Home');
+        $ServicesData = json_decode(ServicesModel::all());
+        $CoursesData = json_decode(CourseModel::orderBy('id', 'desc')->limit(6)->get());
+
+        return view('Home', [
+            'ServicesData' => $ServicesData,
+            'CoursesData' => $CoursesData,
+        ]);
     }
 }
