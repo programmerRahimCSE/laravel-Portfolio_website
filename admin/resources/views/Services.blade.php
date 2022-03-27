@@ -178,6 +178,7 @@ function getServicesData() {
                     $('#editModal').modal('show');
 
                 })
+                //data table
 
                 $('#serviceDataTable').DataTable({"order":false});
                 $('.dataTables_length').addClass('bs-select');
@@ -285,7 +286,7 @@ $('#serviceEditConfirmBtn').click(function() {
     ServiceUpdate(id,name,des,img);
 })
 
-
+// Services Update
 function ServiceUpdate(serviceID,serviceName,serviceDes,serviceImg) {
   
     if(serviceName.length==0){
